@@ -188,34 +188,34 @@ cal_all_tools = function(seurat_object,
     t_start = Sys.time()
     gc()
     score = switch(tool,
-                   AUCell = cal_AUCell(GetAssayData(object = seurat_object, assay = "RNA", slot = "data"),
+                   AUCell = cal_AUCell(GetAssayData(object = seurat_object, assay = "RNA", slot = "counts"),
                                        gSets,
                                        n_cores),  #0,0.8
-                   pagoda2 = cal_pagoda2(GetAssayData(object = seurat_object, assay = "RNA", slot = "data"),
+                   pagoda2 = cal_pagoda2(GetAssayData(object = seurat_object, assay = "RNA", slot = "counts"),
                                          gSets,
                                          n_cores=n_cores),  #-13,65
-                   fscLVM = cal_fscLVM(GetAssayData(object = seurat_object, assay = "RNA", slot = "data"),
+                   fscLVM = cal_fscLVM(GetAssayData(object = seurat_object, assay = "RNA", slot = "counts"),
                                        gSets_path,
                                        type = mat_type),
-                   Vision = cal_vision(GetAssayData(object = seurat_object, assay = "RNA", slot = "data"),
+                   Vision = cal_vision(GetAssayData(object = seurat_object, assay = "RNA", slot = "counts"),
                                        gSets_path,
                                        n_cores),  #-0.6895973, 3.32
-                   ROMA = cal_ROMA(GetAssayData(object = seurat_object, assay = "RNA", slot = "data"),
+                   ROMA = cal_ROMA(GetAssayData(object = seurat_object, assay = "RNA", slot = "counts"),
                                    gSets,
                                    n_cores),   #-0.07, 0.4
-                   GSVA = cal_gsva(GetAssayData(object = seurat_object, assay = "RNA", slot = "data"),
+                   GSVA = cal_gsva(GetAssayData(object = seurat_object, assay = "RNA", slot = "counts"),
                                    gSets,
                                    n_cores), #-0.98,0.94
-                   ssGSEA = cal_ssgsea(GetAssayData(object = seurat_object, assay = "RNA", slot = "data"),
+                   ssGSEA = cal_ssgsea(GetAssayData(object = seurat_object, assay = "RNA", slot = "counts"),
                                        gSets,
                                        n_cores),#-0.5,0.5
-                   plage = cal_plage(GetAssayData(object = seurat_object, assay = "RNA", slot = "data"),
+                   plage = cal_plage(GetAssayData(object = seurat_object, assay = "RNA", slot = "counts"),
                                      gSets,
                                      n_cores),  #-1,1
-                   zscore = cal_zscore(GetAssayData(object = seurat_object, assay = "RNA", slot = "data"),
+                   zscore = cal_zscore(GetAssayData(object = seurat_object, assay = "RNA", slot = "counts"),
                                        gSets,
                                        n_cores),   #-4,29
-                   seurat = cal_SeuratScore(GetAssayData(object = seurat_object, assay = "RNA", slot = "data"),
+                   seurat = cal_SeuratScore(GetAssayData(object = seurat_object, assay = "RNA", slot = "counts"),
                                             gSets),  #-1753,6958
                    scSigScore = cal_scSigScore(),
                    gene = counts)
